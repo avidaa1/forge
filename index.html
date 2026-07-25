@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src fonts.gstatic.com; script-src 'self' 'unsafe-inline' www.googletagmanager.com; img-src 'self' data:; connect-src www.google-analytics.com; frame-ancestors 'self'; base-uri 'self';">
+<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>AVIDAA FORGE — Products &amp; Tools</title>
+<meta name="description" content="AVIDAA FORGE — templates, tools, and skill packs. Signal beneath the noise.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23241a10'/%3E%3Cpath d='M14 44 L32 14 L50 44 Z' fill='none' stroke='%23c98a3d' stroke-width='3'/%3E%3Ccircle cx='32' cy='36' r='4' fill='%23c1272d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IBM+Plex+Mono:wght@400;500;700&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G8M1YZQ8WF"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-G8M1YZQ8WF');</script>
+<style>
+:root{
+  --kraft:#241a10;
+  --kraft2:#2e2115;
+  --paper:#ece0c8;
+  --paper-dim:#c9b892;
+  --ink:#1b140c;
+  --stamp:#c1272d;
+  --stamp2:#a02020;
+  --brass:#c98a3d;
+  --teal:#3f8a80;
+  --line:rgba(201,138,61,.28);
+  --ff-stamp:'Special Elite',cursive;
+  --ff-mono:'IBM Plex Mono',monospace;
+  --ff-head:'Oswald',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,.025) 1px, transparent 0) 0 0/3px 3px,
+    repeating-linear-gradient(0deg, rgba(0,0,0,.05) 0px, rgba(0,0,0,.05) 1px, transparent 1px, transparent 3px),
+    radial-gradient(ellipse at 20% 0%, #362817 0%, transparent 55%),
+    radial-gradient(ellipse at 100% 100%, #2a1f13 0%, transparent 60%),
+    var(--kraft);
+  color:var(--paper);
+  font-family:var(--ff-mono);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+img,svg{max-width:100%;height:auto}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ===== TOPBAR ===== */
+header{border-bottom:2px dashed var(--line);position:sticky;top:0;z-index:500;background:rgba(30,21,13,.94);backdrop-filter:blur(8px);box-shadow:0 4px 24px rgba(0,0,0,.35)}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;flex-wrap:wrap;gap:10px;max-width:1180px;margin:0 auto}
+.wordmark{font-family:var(--ff-stamp);font-size:clamp(1.1rem,3vw,1.6rem);letter-spacing:2px;color:var(--paper);display:flex;align-items:center;gap:11px}
+.wordmark .stamp-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border:2px solid var(--stamp);border-radius:50%;
+  box-shadow:inset 0 0 0 2px rgba(193,39,45,.15), 0 2px 6px rgba(0,0,0,.3);
+  color:var(--stamp);font-family:var(--ff-mono);font-size:9px;font-weight:700;
+  transform:rotate(-8deg);flex-shrink:0;
+}
+#back-home{
+  font-weight:700;text-decoration:none;-webkit-appearance:none;appearance:none;white-space:nowrap;
+  font-family:var(--ff-head);letter-spacing:2px;font-size:clamp(1.1rem,3.2vw,1.5rem);font-weight:800;
+  background:linear-gradient(90deg,#ff0080,#ff8c00,#ffe000,#00ff80,#00bfff,#a855f7,#ff0080);
+  background-size:300% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:rainbow 3s linear infinite;
+}
+@keyframes rainbow{to{background-position:300% center}}
+#back-home:hover{animation:rainbow 3s linear infinite, glitch .3s steps(2);}
+@keyframes glitch{0%{transform:translate(0,0)}20%{transform:translate(-1px,1px)}40%{transform:translate(1px,-1px)}60%{transform:translate(-1px,-1px)}80%{transform:translate(1px,1px)}100%{transform:translate(0,0)}}
+@media (prefers-reduced-motion:reduce){#back-home{animation:none}}
+
+.navrow{display:flex;flex-wrap:wrap;gap:8px;height:auto;align-items:center;justify-content:flex-start;padding:0 20px 12px;max-width:1180px;margin:0 auto}
+.tab{
+  -webkit-appearance:none;appearance:none;white-space:nowrap;cursor:pointer;
+  font-family:var(--ff-mono);font-size:clamp(.64rem,1.6vw,.74rem);letter-spacing:1.5px;text-transform:uppercase;
+  padding:7px clamp(9px,2.2vw,14px);background:transparent;border:1px solid var(--line);color:var(--paper-dim);
+  border-radius:2px;transition:all .2s;
+}
+.tab:hover,.tab.active{border-color:var(--brass);color:var(--brass);background:rgba(201,138,61,.08)}
+
+/* ===== HERO ===== */
+.hero{position:relative;padding:72px 20px 0;text-align:center;border-bottom:2px dashed var(--line)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.45;pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:760px;margin:0 auto}
+.crate-tag{
+  display:inline-block;border:2px solid var(--brass);padding:5px 18px;font-family:var(--ff-mono);
+  font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--brass);transform:rotate(-2deg);
+  margin-bottom:24px;background:rgba(201,138,61,.07);box-shadow:0 3px 10px rgba(0,0,0,.25);
+}
+.hero h1{font-family:var(--ff-stamp);font-size:clamp(2.1rem,6vw,3.6rem);line-height:1.18;color:var(--paper);margin-bottom:18px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.hero p{font-size:clamp(.87rem,2vw,1.02rem);color:var(--paper-dim);line-height:1.75;max-width:580px;margin:0 auto 28px}
+.hero .stampline{font-family:var(--ff-mono);font-size:10px;letter-spacing:3px;color:var(--teal);text-transform:uppercase;margin-bottom:36px;display:inline-block}
+.trust-strip{
+  position:relative;z-index:2;display:flex;flex-wrap:wrap;justify-content:center;gap:0;
+  border-top:1px dashed var(--line);max-width:900px;margin:0 auto;
+}
+.trust-item{
+  flex:1;min-width:150px;padding:18px 16px;border-right:1px dashed var(--line);text-align:center;
+}
+.trust-item:last-child{border-right:none}
+.trust-item .num{font-family:var(--ff-stamp);font-size:1.4rem;color:var(--brass);display:block;margin-bottom:2px}
+.trust-item .label{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--paper-dim)}
+@media(max-width:700px){.trust-item{border-right:none;border-bottom:1px dashed var(--line);min-width:45%}}
+
+/* ===== SECTION HEADERS ===== */
+.section{padding:56px 20px}
+.section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:32px;flex-wrap:wrap}
+.section-head h2{font-family:var(--ff-head);font-size:clamp(1.35rem,3.4vw,1.9rem);font-weight:600;text-transform:uppercase;letter-spacing:2.5px;color:var(--paper)}
+.section-head .manifest-no{font-family:var(--ff-mono);font-size:10.5px;color:var(--brass);letter-spacing:2.5px;font-weight:500}
+.section-head::after{content:'';flex:1;border-bottom:2px dashed var(--line);align-self:center}
+
+/* ===== PRODUCT GRID ===== */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:24px}
+.crate{
+  position:relative;border:2px solid var(--line);background:linear-gradient(160deg,rgba(52,38,24,.6),rgba(40,29,18,.55));
+  padding:24px 22px 22px;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+  box-shadow:0 6px 18px rgba(0,0,0,.22);
+}
+.crate:hover{border-color:var(--brass);transform:translateY(-4px);box-shadow:0 14px 32px rgba(0,0,0,.35),0 0 0 1px rgba(201,138,61,.15)}
+.crate::before{
+  content:'';position:absolute;top:15px;left:15px;right:15px;bottom:15px;
+  border:1px dashed rgba(201,138,61,.16);pointer-events:none;
+}
+.crate .badge{
+  display:inline-flex;align-items:center;gap:5px;font-family:var(--ff-mono);font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 10px;border:1.5px solid var(--stamp);color:var(--stamp);transform:rotate(-3deg);margin-bottom:14px;
+  box-shadow:inset 0 0 0 1.5px rgba(193,39,45,.12);
+}
+.crate .badge::before{content:'';width:5px;height:5px;border-radius:50%;background:currentColor}
+.crate .badge.soon{border-color:var(--teal);color:var(--teal);box-shadow:inset 0 0 0 1.5px rgba(63,138,128,.12)}
+.crate h3{font-family:var(--ff-head);font-size:1.2rem;font-weight:600;letter-spacing:.4px;color:var(--paper);margin-bottom:9px;line-height:1.3}
+.crate .desc{font-size:.81rem;color:var(--paper-dim);line-height:1.65;margin-bottom:16px;min-height:64px}
+.crate .price{font-family:var(--ff-stamp);font-size:1.55rem;color:var(--brass);margin-bottom:16px;display:flex;align-items:baseline;gap:6px}
+.crate .price small{font-family:var(--ff-mono);font-size:.6rem;color:var(--paper-dim);letter-spacing:1px;font-style:normal}
+.crate a.buy{
+  display:inline-flex;align-items:center;gap:8px;-webkit-appearance:none;appearance:none;
+  font-family:var(--ff-mono);font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;
+  padding:11px 16px;border:1.5px solid var(--brass);color:var(--brass);background:transparent;transition:all .2s ease;width:100%;justify-content:center;
+}
+.crate a.buy:hover{background:var(--brass);color:var(--ink);box-shadow:0 4px 14px rgba(201,138,61,.35)}
+.crate a.buy.disabled{border-color:rgba(201,184,146,.35);color:rgba(201,184,146,.55);pointer-events:none;box-shadow:none}
+.crate .dest{font-family:var(--ff-mono);font-size:8px;letter-spacing:2px;color:var(--paper-dim);text-align:center;margin-top:9px;text-transform:uppercase;opacity:.75}
+
+/* ===== ROUTE / HOW IT WORKS ===== */
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:2px solid var(--line);box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.route-step{padding:22px 20px;border-right:1px dashed var(--line);position:relative;transition:background .2s}
+.route-step:hover{background:rgba(201,138,61,.04)}
+.route-step:last-child{border-right:none}
+.route-step .num{font-family:var(--ff-stamp);font-size:1.7rem;color:var(--brass);opacity:.45}
+.route-step h4{font-family:var(--ff-head);font-size:.87rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin:9px 0 7px;color:var(--paper)}
+.route-step p{font-size:.76rem;color:var(--paper-dim);line-height:1.65}
+@media(max-width:700px){.route-step{border-right:none;border-bottom:1px dashed var(--line)}}
+
+/* ===== FOOTER ===== */
+footer{border-top:2px dashed var(--line);padding:36px 20px 44px;text-align:center;margin-top:24px;background:rgba(0,0,0,.1)}
+footer .badge-count{
+  display:inline-block;font-family:var(--ff-mono);font-size:9px;font-weight:500;letter-spacing:2px;text-transform:uppercase;
+  color:var(--teal);border:1px solid rgba(63,138,128,.35);padding:6px 16px;margin-bottom:18px;border-radius:2px;
+}
+footer .sig{font-family:var(--ff-stamp);font-size:.95rem;letter-spacing:2px;color:var(--brass);margin-bottom:12px}
+footer .disclosure{font-size:.65rem;color:var(--paper-dim);margin-top:10px;line-height:1.7;max-width:520px;margin-left:auto;margin-right:auto;opacity:.85}
+
+@media (max-width:600px){
+  .hero{padding:44px 16px 30px}
+  .section{padding:38px 16px}
+}
+
+/* ===== CHATBOT (module) ===== */
+#chatbot{--cb-cyan:var(--brass);--cb-purple:var(--stamp);--cb-green:var(--teal);--cb-fb:var(--ff-mono);--cb-fd:var(--ff-mono);}
+#chatbot{position:fixed;bottom:20px;right:18px;z-index:9000;width:min(400px,calc(100vw - 24px));font-family:var(--cb-fb);}
+#chat-toggle{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--stamp),var(--brass));border:2px solid rgba(255,255,255,.15);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 0 20px rgba(193,39,45,.4);margin-left:auto;-webkit-appearance:none;appearance:none;transition:transform .2s;}
+#chat-toggle:hover{transform:scale(1.08)}
+#chat-box{background:rgba(20,14,8,.97);border:2px solid var(--line);display:none;flex-direction:column;margin-bottom:10px;border-radius:2px;box-shadow:0 0 40px rgba(0,0,0,.7)}
+#chat-box.open{display:flex}
+#chat-head{padding:11px 15px;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center}
+.ch-title{font-family:var(--ff-stamp);font-size:12px;letter-spacing:2px;color:var(--brass)}
+.ch-status{font-size:8px;letter-spacing:2px;color:var(--teal);display:flex;align-items:center;gap:5px;text-transform:uppercase}
+.ch-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:cb-pulse 1.5s ease-in-out infinite}
+@keyframes cb-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.ch-close{color:rgba(236,224,200,.4);cursor:pointer;font-size:16px;padding:0 2px}
+#chat-msgs{height:230px;overflow-y:auto;padding:13px;display:flex;flex-direction:column;gap:9px}
+.cmsg{font-size:12px;line-height:1.55;padding:8px 12px;max-width:88%;white-space:pre-wrap}
+.cmsg.ai{background:rgba(201,138,61,.06);border-left:2px solid var(--brass);color:var(--paper);align-self:flex-start}
+.cmsg.ai::before{content:'FORGE';font-size:7px;letter-spacing:2px;color:var(--brass);display:block;margin-bottom:4px;opacity:.7}
+.cmsg.user{background:rgba(193,39,45,.08);border-right:2px solid var(--stamp);color:var(--paper);align-self:flex-end;text-align:right}
+.typing-indicator{display:flex;gap:4px;padding:9px 13px;align-self:flex-start}
+.typing-indicator span{width:5px;height:5px;background:var(--brass);border-radius:50%;opacity:.4;animation:cb-dot .8s ease-in-out infinite}
+.typing-indicator span:nth-child(2){animation-delay:.15s}
+.typing-indicator span:nth-child(3){animation-delay:.3s}
+@keyframes cb-dot{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+#chat-suggestions{display:flex;flex-wrap:wrap;gap:5px;padding:7px 13px;border-top:1px dashed var(--line)}
+.chat-sugg{font-size:10px;padding:3px 9px;border:1px solid var(--line);color:var(--paper-dim);cursor:pointer;background:transparent}
+.chat-sugg:hover{border-color:var(--brass);color:var(--brass)}
+#chat-input-row{display:flex;border-top:1px dashed var(--line)}
+#chat-input{flex:1;background:transparent;border:none;outline:none;color:var(--paper);font-family:var(--cb-fb);font-size:12.5px;padding:10px 13px;-webkit-appearance:none;appearance:none}
+#chat-input::placeholder{color:rgba(236,224,200,.25)}
+#chat-send{background:transparent;border:none;border-left:1px dashed var(--line);color:var(--brass);padding:0 15px;cursor:pointer;font-size:15px;-webkit-appearance:none;appearance:none}
+@media (max-width:600px){#chatbot{bottom:12px;right:8px}#chat-msgs{height:44vh}}
+@media (prefers-reduced-motion:reduce){#chat-toggle{animation:none}.ch-dot{animation:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="wordmark"><span class="stamp-badge">FG</span>FORGE</div>
+    <a id="back-home" href="https://avidaa1.github.io">AVIDAA</a>
+  </div>
+  <nav class="navrow">
+    <div class="tab active" onclick="scrollToId('free')">Free Now</div>
+    <div class="tab" onclick="scrollToId('catalog')">Packaged</div>
+    <div class="tab" onclick="scrollToId('route')">How It Works</div>
+    <div class="tab" onclick="scrollToId('about')">About Forge</div>
+  </nav>
+</header>
+
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-inner">
+    <div class="crate-tag">4 Products Packaged &middot; Est. 2026</div>
+    <h1>Real Tools From a Real Ecosystem</h1>
+    <p>AVIDAA runs 40+ live single-file pages, built and validated by hand. Four tools from that build discipline are now packaged and ready to sell, awaiting their marketplace listing. One crate is open now, free, no wait.</p>
+    <div class="stampline">signal beneath the noise</div>
+  </div>
+  <div class="trust-strip">
+    <div class="trust-item"><span class="num">40+</span><span class="label">Live Systems</span></div>
+    <div class="trust-item"><span class="num">100%</span><span class="label">Offline AI, No API</span></div>
+    <div class="trust-item"><span class="num">7-Step</span><span class="label">Validation Before Ship</span></div>
+    <div class="trust-item"><span class="num">Solo</span><span class="label">Built &amp; Maintained</span></div>
+  </div>
+</section>
+
+<section class="section" id="free">
+  <div class="section-head"><h2>Open Crate — Free</h2><span class="manifest-no">IN STOCK NOW</span></div>
+  <div class="crate" style="max-width:640px">
+    <div class="badge">IN STOCK</div>
+    <h3>Papiamentu Quick Reference</h3>
+    <div class="desc" style="min-height:auto">Verified core orthography, greetings, and proverbs from the Papiamentu di Kòrsou system — the same reference standard used across the AVIDAA Papiamentu archive. No signup, no download, no marketplace hop.</div>
+    <a class="buy" href="javascript:void(0)" onclick="togglePapia()" id="papia-toggle-btn">Open Reference &#8595;</a>
+    <div id="papia-panel" style="display:none;margin-top:18px;padding-top:18px;border-top:1px dashed var(--line);font-size:.79rem;line-height:1.95;color:var(--paper-dim)">
+      <strong style="color:var(--brass)">Greetings</strong><br>
+      Bon bini (welcome) &middot; Bon dia (good morning) &middot; Bon tardi (good afternoon) &middot; Bon nochi (good night) &middot; Kon ta bai? (how are you?) &middot; Mashá danki (thank you very much) &middot; Di nada (you're welcome)<br><br>
+      <strong style="color:var(--brass)">Core spelling rules</strong><br>
+      Phonemic system: k/s not c (kas not casa, sinku not cinco). Word-initial diphthongs shift i&rarr;y and u&rarr;w (yabi not iabi, wowo not uowo). Four digraphs: ch, dj, sh, zj.<br><br>
+      <strong style="color:var(--brass)">A proverb</strong><br>
+      <em>"Awa ketu sa gaña hende."</em> — Still water deceives people.<br><br>
+      <strong style="color:var(--brass)">Full archive</strong><br>
+      <a href="https://avidaa1.github.io/papiamentu" target="_blank" rel="noopener" style="color:var(--teal)">avidaa1.github.io/papiamentu &#8599;</a> — vocabulary, grammar, a 40-question quiz, sentence builder, and cultural section.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="catalog">
+  <div class="section-head"><h2>Packaged</h2><span class="manifest-no">MANIFEST NO. 001</span></div>
+  <div class="grid" id="product-grid"></div>
+</section>
+
+<section class="section" id="route">
+  <div class="section-head"><h2>How It Works</h2><span class="manifest-no">ROUTING</span></div>
+  <div class="route">
+    <div class="route-step"><div class="num">01</div><h4>Browse Here</h4><p>Every crate on this page is a preview — description, price, and destination dock.</p></div>
+    <div class="route-step"><div class="num">02</div><h4>Pay There</h4><p>Checkout happens on the destination marketplace (their cart, their card processing) — never on this page.</p></div>
+    <div class="route-step"><div class="num">03</div><h4>Deliver Instantly</h4><p>Digital products download or unlock immediately after payment clears on the destination platform.</p></div>
+    <div class="route-step"><div class="num">04</div><h4>Support Direct</h4><p>Questions about a product route through the destination platform's own messaging first.</p></div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-head"><h2>About Forge</h2><span class="manifest-no">FILE 002</span></div>
+  <p style="max-width:640px;color:var(--paper-dim);font-size:.85rem;line-height:1.8">
+  FORGE is the storefront wing of AVIDAA — a catalog, not a cashier. Nothing here processes a card, stores a payment detail, or takes a checkout step. Every crate hands off to its own marketplace listing, where the platform handles payment, tax, and delivery under its own terms. This keeps AVIDAA a pure knowledge-and-build surface, and keeps every transaction under a licensed platform's own compliance.
+  </p>
+</section>
+
+<footer>
+  <div class="badge-count" id="ai-badge">— OFFLINE AI SYSTEMS ON THIS PAGE</div>
+  <div class="sig">AVIDAA &times; IO</div>
+  <div class="disclosure">FORGE lists products hosted on third-party marketplaces. Prices, availability, and delivery are set by each destination platform. AVIDAA is not the seller of record for any linked listing.</div>
+</footer>
+
+<!-- ===== CHATBOT ===== -->
+<div id="chatbot">
+  <div id="chat-box">
+    <div id="chat-head">
+      <div class="ch-title">FORGE DESK</div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="ch-status"><div class="ch-dot"></div>ONLINE</div>
+        <div class="ch-close" onclick="toggleChat()">&#x2715;</div>
+      </div>
+    </div>
+    <div id="chat-msgs"></div>
+    <div id="chat-suggestions">
+      <div class="chat-sugg" onclick="quickAsk('What is Forge?')">What is Forge?</div>
+      <div class="chat-sugg" onclick="quickAsk('How do I pay?')">How do I pay?</div>
+      <div class="chat-sugg" onclick="quickAsk('What do you sell?')">What's for sale?</div>
+    </div>
+    <div id="chat-input-row">
+      <input id="chat-input" placeholder="Ask the desk..." maxlength="200">
+      <button id="chat-send" onclick="chatSend()">&#x27A4;</button>
+    </div>
+  </div>
+  <button id="chat-toggle" onclick="toggleChat()">&#x1F4E6;</button>
+</div>
+
+<script>
+window.pageVisible=!document.hidden;
+document.addEventListener('visibilitychange',()=>{window.pageVisible=!document.hidden;});
+
+function escHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function scrollToId(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function togglePapia(){
+  const panel=document.getElementById('papia-panel');
+  const btn=document.getElementById('papia-toggle-btn');
+  const open=panel.style.display==='none';
+  panel.style.display=open?'block':'none';
+  btn.textContent=open?'Close Reference \u2191':'Open Reference \u2193';
+}
+
+/* ============================================================
+   PRODUCT DATA — edit this array only to add/remove listings.
+   dest: destination platform label shown under the button.
+   href: outbound link to the REAL listing (Envato / KDP / etc).
+   status: 'live' | 'soon' — soon renders a disabled button.
+   ============================================================ */
+const PRODUCTS=[
+  {
+    id:'p1',
+    name:'Single-File Page Build Kit',
+    desc:'The exact discipline behind 40+ live AVIDAA pages: a working Python pre-deploy validator (div-balance, node --check, duplicate-ID scan) plus a validated starter template. Built and packaged.',
+    price:'$49',
+    dest:'Packaged \u2014 awaiting marketplace listing',
+    href:'#',
+    status:'soon'
+  },
+  {
+    id:'p2',
+    name:'Offline Chatbot Engine',
+    desc:'A no-API, pure-JS chatbot core with keyword scoring and a working live demo page. The same pattern running on every AVIDAA page right now. Built and packaged.',
+    price:'$29',
+    dest:'Packaged \u2014 awaiting marketplace listing',
+    href:'#',
+    status:'soon'
+  },
+  {
+    id:'p3',
+    name:'Crash-Prevention Playbook',
+    desc:'Ten documented crash patterns from real single-file HTML builds, each with symptom, cause, and fix \u2014 plus the pre-deploy validator script. Built and packaged.',
+    price:'$15',
+    dest:'Packaged \u2014 awaiting marketplace listing',
+    href:'#',
+    status:'soon'
+  },
+  {
+    id:'p4',
+    name:'Babylon.js GLB Embedding Pattern',
+    desc:'The base64-embed-to-File-object technique for loading 3D models in a single HTML file with zero external hosting, with a working runnable demo scene. Built and packaged.',
+    price:'$19',
+    dest:'Packaged \u2014 awaiting marketplace listing',
+    href:'#',
+    status:'soon'
+  }
+];
+
+function buildProducts(){
+  const grid=document.getElementById('product-grid');
+  grid.innerHTML='';
+  PRODUCTS.forEach(p=>{
+    const card=document.createElement('div');card.className='crate';
+    const badge=document.createElement('div');badge.className='badge'+(p.status==='soon'?' soon':'');
+    badge.textContent=p.status==='soon'?'PACKAGED':'IN STOCK';
+    const h3=document.createElement('h3');h3.textContent=p.name;
+    const desc=document.createElement('div');desc.className='desc';desc.textContent=p.desc;
+    const price=document.createElement('div');price.className='price';
+    price.innerHTML=escHtml(p.price)+' <small>USD</small>';
+    const buy=document.createElement('a');
+    buy.className='buy'+(p.status==='soon'?' disabled':'');
+    buy.href=p.status==='soon'?'javascript:void(0)':p.href;
+    buy.target=p.status==='soon'?'_self':'_blank';
+    buy.rel='noopener';
+    buy.textContent=p.status==='soon'?'Not Yet Listed':'View Listing \u2197';
+    const dest=document.createElement('div');dest.className='dest';dest.textContent=p.dest;
+    card.appendChild(badge);card.appendChild(h3);card.appendChild(desc);card.appendChild(price);card.appendChild(buy);card.appendChild(dest);
+    grid.appendChild(card);
+  });
+}
+buildProducts();
+
+/* ===== AI FEATURES REGISTRY (footer badge) ===== */
+const AI_FEATURES=['Offline Forge Desk chatbot','Generative crate-drift ambient canvas'];
+document.getElementById('ai-badge').textContent=AI_FEATURES.length+' OFFLINE AI SYSTEMS ON THIS PAGE';
+
+/* ===== KNOWLEDGE BASE — real AVIDAA facts ===== */
+const KB=[
+  {k:['what is forge','forge','about forge'],a:"Forge is AVIDAA's catalog page. It shows products and links out to where they're actually sold — no checkout lives here."},
+  {k:['pay','payment','how do i pay','checkout','buy'],a:"Payment always happens on the destination marketplace shown under each product, using their own checkout. This page never touches your card details."},
+  {k:['sell','for sale','products','what do you sell','catalog'],a:"One item is live now, free: the Papiamentu Quick Reference, open above with no signup. Four more are built and packaged — a page-build kit, chatbot engine, crash-prevention playbook, and a GLB embedding guide — each awaiting its marketplace listing."},
+  {k:['free','papiamentu'],a:"The Papiamentu Quick Reference is open now, free, no marketplace hop — scroll to 'Open Crate' and click through. Full archive: avidaa1.github.io/papiamentu"},
+  {k:['refund','support','help with order'],a:"Order support runs through whichever marketplace processed your payment — they hold the transaction record, not AVIDAA."},
+  {k:['io','who is io'],a:"IO is the sole developer and architect of AVIDAA. Full identity page: avidaa1.github.io/io"},
+  {k:['avidaa','what is avidaa'],a:"AVIDAA is a global knowledge and build ecosystem — 40+ live single-file HTML pages spanning AI, music, gaming, philosophy, security, and culture. Mission: signal beneath the noise. Home: avidaa1.github.io"},
+  {k:['stack','tech','technology','built with'],a:"AVIDAA runs on vanilla HTML+CSS+JS, Three.js r170 and Babylon.js 6.45.1 for 3D pages, Web Audio API for music tools, and AES-256-GCM for encrypted content — no frameworks, no build step, deployed straight to GitHub Pages."},
+  {k:['how many pages','how many repos','ecosystem size'],a:"40+ live repos under avidaa1.github.io, each a single deployable HTML file, each with its own visual identity — no two pages share a design."}
+];
+const REDIRECTS=[
+  "Not sure I've got that one — try asking about a product, payment, or how Forge routes orders.",
+  "That's outside what's on this manifest. Ask about the catalog, or how checkout routes.",
+  "Didn't land. Try 'what's for sale' or 'how do I pay'."
+];
+function scoreKB(msg){
+  const m=msg.toLowerCase();let best=null,bestScore=0;
+  KB.forEach(row=>{
+    row.k.forEach(kw=>{
+      if(m.includes(kw)){const s=kw.length;if(s>bestScore){bestScore=s;best=row;}}
+    });
+  });
+  return {best,bestScore};
+}
+function chatMatch(msg){
+  const {best,bestScore}=scoreKB(msg);
+  if(best&&bestScore>=3)return {text:best.a};
+  return {text:REDIRECTS[Math.floor(Math.random()*REDIRECTS.length)]};
+}
+function addMsg(text,cls){
+  const div=document.createElement('div');div.className='cmsg '+cls;div.textContent=text;
+  const m=document.getElementById('chat-msgs');m.appendChild(div);m.scrollTop=9999;
+}
+function showTyping(){
+  const t=document.createElement('div');t.className='typing-indicator';t.id='typing';
+  t.innerHTML='<span></span><span></span><span></span>';
+  const m=document.getElementById('chat-msgs');m.appendChild(t);m.scrollTop=9999;return t;
+}
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chat-box').classList.toggle('open',chatOpen);
+  if(chatOpen&&document.getElementById('chat-msgs').children.length===0){
+    setTimeout(()=>addMsg('Forge Desk online. Ask about a product, payment routing, or the catalog.','ai'),300);
+  }
+  if(chatOpen)document.getElementById('chat-input').focus();
+}
+function chatSend(){
+  const inp=document.getElementById('chat-input');const msg=inp.value.trim();if(!msg)return;
+  addMsg(msg,'user');inp.value='';
+  const typing=showTyping();
+  setTimeout(()=>{
+    typing.remove();
+    const res=chatMatch(msg);
+    addMsg(res.text,'ai');
+  },350+Math.random()*300);
+}
+function quickAsk(q){document.getElementById('chat-input').value=q;chatSend();}
+document.getElementById('chat-input').addEventListener('keydown',e=>{if(e.key==='Enter')chatSend();});
+
+/* ===== AMBIENT CANVAS — drifting crates / manifest dots ===== */
+(function(){
+  const c=document.getElementById('hero-canvas');if(!c)return;
+  const ctx=c.getContext('2d');
+  function resize(){c.width=c.offsetWidth;c.height=c.offsetHeight;}
+  resize();window.addEventListener('resize',resize);
+  const N=18,items=[];
+  for(let i=0;i<N;i++){
+    items.push({
+      x:Math.random()*1,y:Math.random()*1,
+      s:6+Math.random()*10,
+      vx:(Math.random()-.5)*.0004,vy:.00015+Math.random()*.0003,
+      rot:Math.random()*Math.PI,vr:(Math.random()-.5)*.001,
+      op:.15+Math.random()*.25
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,c.width,c.height);
+    items.forEach(it=>{
+      it.x+=it.vx;it.y+=it.vy;it.rot+=it.vr;
+      if(it.y>1.05){it.y=-.05;it.x=Math.random();}
+      if(it.x>1.05)it.x=-.05;if(it.x<-.05)it.x=1.05;
+      const px=it.x*c.width,py=it.y*c.height;
+      ctx.save();
+      ctx.translate(px,py);ctx.rotate(it.rot);
+      ctx.strokeStyle='rgba(201,138,61,'+it.op+')';
+      ctx.lineWidth=1;
+      ctx.strokeRect(-it.s/2,-it.s/2,it.s,it.s);
+      ctx.beginPath();ctx.moveTo(-it.s/2,-it.s/2);ctx.lineTo(it.s/2,it.s/2);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(it.s/2,-it.s/2);ctx.lineTo(-it.s/2,it.s/2);ctx.stroke();
+      ctx.restore();
+    });
+    if(window.pageVisible)requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
