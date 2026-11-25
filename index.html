@@ -168,37 +168,11 @@ footer .disclosure{font-size:.65rem;color:var(--paper-dim);margin-top:10px;line-
 }
 
 /* ===== CHATBOT (module) ===== */
-#chatbot{--cb-cyan:var(--brass);--cb-purple:var(--stamp);--cb-green:var(--teal);--cb-fb:var(--ff-mono);--cb-fd:var(--ff-mono);}
-#chatbot{position:fixed;bottom:20px;right:18px;z-index:9000;width:min(400px,calc(100vw - 24px));font-family:var(--cb-fb);}
-#chat-toggle{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--stamp),var(--brass));border:2px solid rgba(255,255,255,.15);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:19px;box-shadow:0 0 20px rgba(193,39,45,.4);margin-left:auto;-webkit-appearance:none;appearance:none;transition:transform .2s;}
-#chat-toggle:hover{transform:scale(1.08)}
-#chat-box{background:rgba(20,14,8,.97);border:2px solid var(--line);display:none;flex-direction:column;margin-bottom:10px;border-radius:2px;box-shadow:0 0 40px rgba(0,0,0,.7)}
-#chat-box.open{display:flex}
-#chat-head{padding:11px 15px;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center}
 .ch-title{font-family:var(--ff-stamp);font-size:12px;letter-spacing:2px;color:var(--brass)}
 .ch-status{font-size:8px;letter-spacing:2px;color:var(--teal);display:flex;align-items:center;gap:5px;text-transform:uppercase}
-.ch-dot{width:5px;height:5px;border-radius:50%;background:var(--teal);animation:cb-pulse 1.5s ease-in-out infinite}
 @keyframes cb-pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .ch-close{color:rgba(236,224,200,.4);cursor:pointer;font-size:16px;padding:0 2px}
-#chat-msgs{height:230px;overflow-y:auto;padding:13px;display:flex;flex-direction:column;gap:9px}
-.cmsg{font-size:12px;line-height:1.55;padding:8px 12px;max-width:88%;white-space:pre-wrap}
-.cmsg.ai{background:rgba(201,138,61,.06);border-left:2px solid var(--brass);color:var(--paper);align-self:flex-start}
-.cmsg.ai::before{content:'FORGE';font-size:7px;letter-spacing:2px;color:var(--brass);display:block;margin-bottom:4px;opacity:.7}
-.cmsg.user{background:rgba(193,39,45,.08);border-right:2px solid var(--stamp);color:var(--paper);align-self:flex-end;text-align:right}
-.typing-indicator{display:flex;gap:4px;padding:9px 13px;align-self:flex-start}
-.typing-indicator span{width:5px;height:5px;background:var(--brass);border-radius:50%;opacity:.4;animation:cb-dot .8s ease-in-out infinite}
-.typing-indicator span:nth-child(2){animation-delay:.15s}
-.typing-indicator span:nth-child(3){animation-delay:.3s}
 @keyframes cb-dot{0%,100%{opacity:.2;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
-#chat-suggestions{display:flex;flex-wrap:wrap;gap:5px;padding:7px 13px;border-top:1px dashed var(--line)}
-.chat-sugg{font-size:10px;padding:3px 9px;border:1px solid var(--line);color:var(--paper-dim);cursor:pointer;background:transparent}
-.chat-sugg:hover{border-color:var(--brass);color:var(--brass)}
-#chat-input-row{display:flex;border-top:1px dashed var(--line)}
-#chat-input{flex:1;background:transparent;border:none;outline:none;color:var(--paper);font-family:var(--cb-fb);font-size:12.5px;padding:10px 13px;-webkit-appearance:none;appearance:none}
-#chat-input::placeholder{color:rgba(236,224,200,.25)}
-#chat-send{background:transparent;border:none;border-left:1px dashed var(--line);color:var(--brass);padding:0 15px;cursor:pointer;font-size:15px;-webkit-appearance:none;appearance:none}
-@media (max-width:600px){#chatbot{bottom:12px;right:8px}#chat-msgs{height:44vh}}
-@media (prefers-reduced-motion:reduce){#chat-toggle{animation:none}.ch-dot{animation:none}}
 </style>
 <style id="mp-20261124">/* mobile pass + AVIDAA design system v1 (20261124) */html{-webkit-text-size-adjust:100%}img,video{max-width:100%;height:auto}iframe{max-width:100%}pre{max-width:100%;overflow-x:auto}/* AVIDAA design system v1 (20261124). Inline this file into a page; pages stay single files.
    Rule of thumb: tokens first, components named .av-*, baseline polish only through :where() (zero specificity) so a page's own styles always win. */
@@ -346,28 +320,6 @@ footer .disclosure{font-size:.65rem;color:var(--paper-dim);margin-top:10px;line-
 </footer>
 
 <!-- ===== CHATBOT ===== -->
-<div id="chatbot">
-  <div id="chat-box">
-    <div id="chat-head">
-      <div class="ch-title">FORGE DESK</div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="ch-status"><div class="ch-dot"></div>ONLINE</div>
-        <div class="ch-close" onclick="toggleChat()">&#x2715;</div>
-      </div>
-    </div>
-    <div id="chat-msgs"></div>
-    <div id="chat-suggestions">
-      <div class="chat-sugg" onclick="quickAsk('What is Forge?')">What is Forge?</div>
-      <div class="chat-sugg" onclick="quickAsk('How do I pay?')">How do I pay?</div>
-      <div class="chat-sugg" onclick="quickAsk('What do you sell?')">What's for sale?</div>
-    </div>
-    <div id="chat-input-row">
-      <input id="chat-input" placeholder="Ask the desk..." maxlength="200">
-      <button id="chat-send" onclick="chatSend()">&#x27A4;</button>
-    </div>
-  </div>
-  <button id="chat-toggle" onclick="toggleChat()">&#x1F4E6;</button>
-</div>
 
 <script>
 window.pageVisible=!document.hidden;
@@ -453,70 +405,9 @@ function buildProducts(){
 buildProducts();
 
 /* ===== AI FEATURES REGISTRY (footer badge) ===== */
-const AI_FEATURES=['Offline Forge Desk chatbot','Generative crate-drift ambient canvas'];
+const AI_FEATURES=['Generative crate-drift ambient canvas'];
 document.getElementById('ai-badge').textContent=AI_FEATURES.length+' OFFLINE AI SYSTEMS ON THIS PAGE';
 
-/* ===== KNOWLEDGE BASE — real AVIDAA facts ===== */
-const KB=[
-  {k:['what is forge','forge','about forge'],a:"Forge is AVIDAA's catalog page. It shows products and links out to where they're actually sold — no checkout lives here."},
-  {k:['pay','payment','how do i pay','checkout','buy'],a:"Payment always happens on the destination marketplace shown under each product, using their own checkout. This page never touches your card details."},
-  {k:['sell','for sale','products','what do you sell','catalog'],a:"One item is live now, free: the Papiamentu Quick Reference, open above with no signup. Four more are built and packaged — a page-build kit, chatbot engine, crash-prevention playbook, and a GLB embedding guide — each awaiting its marketplace listing."},
-  {k:['free','papiamentu'],a:"The Papiamentu Quick Reference is open now, free, no marketplace hop — scroll to 'Open Crate' and click through. Full archive: avidaa1.github.io/papiamentu"},
-  {k:['refund','support','help with order'],a:"Order support runs through whichever marketplace processed your payment — they hold the transaction record, not AVIDAA."},
-  {k:['io','who is io'],a:"IO is the sole developer and architect of AVIDAA. Full identity page: avidaa1.github.io/io"},
-  {k:['avidaa','what is avidaa'],a:"AVIDAA is a global knowledge and build ecosystem — 40+ live single-file HTML pages spanning AI, music, gaming, philosophy, security, and culture. Mission: signal beneath the noise. Home: avidaa1.github.io"},
-  {k:['stack','tech','technology','built with'],a:"AVIDAA runs on vanilla HTML+CSS+JS, Three.js r170 and Babylon.js 6.45.1 for 3D pages, Web Audio API for music tools, and AES-256-GCM for encrypted content — no frameworks, no build step, deployed straight to GitHub Pages."},
-  {k:['how many pages','how many repos','ecosystem size'],a:"40+ live repos under avidaa1.github.io, each a single deployable HTML file, each with its own visual identity — no two pages share a design."}
-];
-const REDIRECTS=[
-  "Not sure I've got that one — try asking about a product, payment, or how Forge routes orders.",
-  "That's outside what's on this manifest. Ask about the catalog, or how checkout routes.",
-  "Didn't land. Try 'what's for sale' or 'how do I pay'."
-];
-function scoreKB(msg){
-  const m=msg.toLowerCase();let best=null,bestScore=0;
-  KB.forEach(row=>{
-    row.k.forEach(kw=>{
-      if(m.includes(kw)){const s=kw.length;if(s>bestScore){bestScore=s;best=row;}}
-    });
-  });
-  return {best,bestScore};
-}
-function chatMatch(msg){
-  const {best,bestScore}=scoreKB(msg);
-  if(best&&bestScore>=3)return {text:best.a};
-  return {text:REDIRECTS[Math.floor(Math.random()*REDIRECTS.length)]};
-}
-function addMsg(text,cls){
-  const div=document.createElement('div');div.className='cmsg '+cls;div.textContent=text;
-  const m=document.getElementById('chat-msgs');m.appendChild(div);m.scrollTop=9999;
-}
-function showTyping(){
-  const t=document.createElement('div');t.className='typing-indicator';t.id='typing';
-  t.innerHTML='<span></span><span></span><span></span>';
-  const m=document.getElementById('chat-msgs');m.appendChild(t);m.scrollTop=9999;return t;
-}
-let chatOpen=false;
-function toggleChat(){
-  chatOpen=!chatOpen;
-  document.getElementById('chat-box').classList.toggle('open',chatOpen);
-  if(chatOpen&&document.getElementById('chat-msgs').children.length===0){
-    setTimeout(()=>addMsg('Forge Desk online. Ask about a product, payment routing, or the catalog.','ai'),300);
-  }
-  if(chatOpen)document.getElementById('chat-input').focus();
-}
-function chatSend(){
-  const inp=document.getElementById('chat-input');const msg=inp.value.trim();if(!msg)return;
-  addMsg(msg,'user');inp.value='';
-  const typing=showTyping();
-  setTimeout(()=>{
-    typing.remove();
-    const res=chatMatch(msg);
-    addMsg(res.text,'ai');
-  },350+Math.random()*300);
-}
-function quickAsk(q){document.getElementById('chat-input').value=q;chatSend();}
-document.getElementById('chat-input').addEventListener('keydown',e=>{if(e.key==='Enter')chatSend();});
 
 /* ===== AMBIENT CANVAS — drifting crates / manifest dots ===== */
 (function(){
@@ -575,7 +466,7 @@ if(document.readyState==='complete')start();else addEventListener('load',start);
 addEventListener('resize',sched);})();</script><script id="av-shell-20261124">/* AVIDAA shell: shared header (or floating pill) + footer with the "Last updated" stamp. No outside calls, no tracking.
    Template tokens are replaced when a page is built: Forge --av-tools Tools 2026-11-24 06:36 */
 (function(){
-  var NAME='Forge',SECTOR='--av-tools',STAMP='2026-11-25 14:45',HOME='https://avidaa1.github.io/';
+  var NAME='Forge',SECTOR='--av-tools',STAMP='2026-11-25 15:20',HOME='https://avidaa1.github.io/';
   var ARROW='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   function build(){
     if(!document.body||document.querySelector('.av-footer'))return;

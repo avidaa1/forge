@@ -1,0 +1,5 @@
+Archived (removed from the live page) by the chatbot audit 20261125_1504.
+Original file: index.html
+
+/* ===== replaced: AI_FEATURES ===== */
+const AI_FEATURES=['Offline Forge Desk chatbot','Generative crate-drift ambient canvas'];
